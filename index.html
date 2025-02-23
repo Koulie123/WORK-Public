@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollover Checklist</title>
+    <style>
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --button-bg: #f0f0f0;
+            --button-text: #000000;
+        }
+
+        :root[data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --button-bg: #333333;
+            --button-text: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        * {
+            font-size: larger;
+            font-weight: 500;
+            margin: 8px;
+        }
+
+        input {
+            width: 25px;
+            height: 25px;
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid var(--text-color);
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 0.5rem;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="" id="reset_button">Reset</button>
+        <button onclick="" id="reset_button_offering">Reset Offering Only</button>
+    </div>
+    <form class="main_form" action="#">
+        <div>
+            <input class="prog" type="checkbox" name="" id="Update_name">
+            <label for="Update_name">Update Name</label>
+        </div>
+        <div>
+            <input class="prog" type="checkbox" name="" id="Discontinuation">
+            <label for="Discontinuation">Discontinuation Date</label>
+        </div>
+        <div>
+            <input class="prog" type="checkbox" name="" id="prices1">
+            <label for="prices1">Program Prices</label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="duplicate">
+            <label for="duplicate">Duplicate Offering</label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="offering_Name">
+            <label for="offering_Name">Offering Name</label>
+        </div>
+        <div>
+            <input class="prog" type="checkbox" name="" id="semester">
+            <label for="semester">Semester</label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="age_restrictions">
+            <label for="age_restrictions">Age Restrictions</label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="registration">
+            <label for="registration">Registration open and Close</label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="prices2">
+            <label for="prices2">Offering Prices</label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="schedule">
+            <label for="schedule">Input Schedule</label>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="canceled">
+            <label for="canceled">Remove Canceled Dates</label>
+        </div>
+    </form>
+    <div>
+        <button onclick="" id="light_mode">Light Mode</button>
+        <button onclick="" id="dark_mode">Dark Mode</button>
+    </div>
+</body>
+<script defer>
+    let inputs = document.querySelectorAll("input");
+    let resetButton = document.querySelector("#reset_button");
+    let reset_button_offering = document.querySelector("#reset_button_offering");
+    let lightModeButton = document.querySelector("#light_mode");
+    let darkModeButton = document.querySelector("#dark_mode");
+    
+    resetButton.addEventListener('click', function() {
+        inputs.forEach(element => {
+            element.checked = false;
+        });
+    });
+
+    reset_button_offering.addEventListener('click', function() {
+        inputs.forEach(element => {
+            if (element.classList.contains('prog') == false) {
+                element.checked = false;
+            }
+        });
+    });
+
+    // Add theme switching functionality
+    lightModeButton.addEventListener('click', function() {
+        document.documentElement.setAttribute('data-theme', 'light');
+    });
+
+    darkModeButton.addEventListener('click', function() {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    });
+</script>
+</html>
