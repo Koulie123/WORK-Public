@@ -26,7 +26,8 @@
         }
 
         * {
-            font-size: larger;
+            --main-size: 1.4rem;
+            font-size: var(--main-size);
             font-weight: 500;
             margin: 8px;
         }
@@ -105,16 +106,21 @@
     <div>
         <button onclick="" id="light_mode">Light Mode</button>
         <button onclick="" id="dark_mode">Dark Mode</button>
+        <button onclick="" id="increase_font">Increase Font</button>
+        <button onclick="" id="decrease_font">Decrease Font</button>
     </div>
+    
 </body>
 <script defer>
+    let  mainSize = getComputedStyle(document.documentElement)
+    .getPropertyValue('--main-size').trim();
     console.log("Hello World")
     let inputs = document.querySelectorAll("input");
     let resetButton = document.querySelector("#reset_button");
     let reset_button_offering = document.querySelector("#reset_button_offering");
     let lightModeButton = document.querySelector("#light_mode");
     let darkModeButton = document.querySelector("#dark_mode");
-    
+
     resetButton.addEventListener('click', function() {
         inputs.forEach(element => {
             element.checked = false;
@@ -136,6 +142,33 @@
 
     darkModeButton.addEventListener('click', function() {
         document.documentElement.setAttribute('data-theme', 'dark');
+    });
+
+    //font changing buttons
+    let inscreaseFontButton = document.querySelector("#increase_font");
+    let decreaseFontButton = document.querySelector("#decrease_font");
+    inscreaseFontButton.addEventListener('click', function() {
+        let currentFont = getComputedStyle(document.documentElement)
+        .getPropertyValue('--main-size').trim();
+        let currentSize = parseFloat(currentFont);
+    
+        // Increase by 0.2rem (or adjust as needed)
+        let newSize = currentSize + 0.2;
+    
+        // Set the new value
+        document.documentElement.style.setProperty('--main-size', newSize + 'rem');
+    }
+    )
+    decreaseFontButton.addEventListener('click', function() {
+        let currentFont = getComputedStyle(document.documentElement)
+            .getPropertyValue('--main-size').trim();
+        let currentSize = parseFloat(currentFont);
+        
+        // Decrease by 0.2rem but don't go below 0.8rem
+        let newSize = Math.max(currentSize - 0.2, 0.8);
+        
+        // Set the new value
+        document.documentElement.style.setProperty('--main-size', newSize + 'rem');
     });
 </script>
 </html>
