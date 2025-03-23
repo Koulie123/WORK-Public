@@ -58,7 +58,7 @@
         <span>
             <button onclick="" id="reset_button">Reset</button>
             <button onclick="" id="reset_button_offering">Reset Offering Only</button>
-            <p>Count:&nbsp;</p><p class="count_number">0</p>
+            <p>Count:&nbsp;</p><p id="count_number">0</p>
         </span>
     </div>
     <form class="main_form" action="#">
@@ -115,64 +115,4 @@
     </div>
     
 </body>
-<script defer>
-    let  mainSize = getComputedStyle(document.documentElement)
-    .getPropertyValue('--main-size').trim();
-    console.log("Hello World")
-    let inputs = document.querySelectorAll("input");
-    let resetButton = document.querySelector("#reset_button");
-    let reset_button_offering = document.querySelector("#reset_button_offering");
-    let lightModeButton = document.querySelector("#light_mode");
-    let darkModeButton = document.querySelector("#dark_mode");
-
-    resetButton.addEventListener('click', function() {
-        inputs.forEach(element => {
-            element.checked = false;
-        });
-    });
-
-    reset_button_offering.addEventListener('click', function() {
-        inputs.forEach(element => {
-            if (element.classList.contains('prog') == false) {
-                element.checked = false;
-            }
-        });
-    });
-
-    // Add theme switching functionality
-    lightModeButton.addEventListener('click', function() {
-        document.documentElement.setAttribute('data-theme', 'light');
-    });
-
-    darkModeButton.addEventListener('click', function() {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    });
-
-    //font changing buttons
-    let inscreaseFontButton = document.querySelector("#increase_font");
-    let decreaseFontButton = document.querySelector("#decrease_font");
-    inscreaseFontButton.addEventListener('click', function() {
-        let currentFont = getComputedStyle(document.documentElement)
-        .getPropertyValue('--main-size').trim();
-        let currentSize = parseFloat(currentFont);
-    
-        // Increase by 0.2rem (or adjust as needed)
-        let newSize = currentSize + 0.2;
-    
-        // Set the new value
-        document.documentElement.style.setProperty('--main-size', newSize + 'rem');
-    }
-    )
-    decreaseFontButton.addEventListener('click', function() {
-        let currentFont = getComputedStyle(document.documentElement)
-            .getPropertyValue('--main-size').trim();
-        let currentSize = parseFloat(currentFont);
-        
-        // Decrease by 0.2rem but don't go below 0.8rem
-        let newSize = Math.max(currentSize - 0.2, 0.8);
-        
-        // Set the new value
-        document.documentElement.style.setProperty('--main-size', newSize + 'rem');
-    });
-</script>
 </html>
