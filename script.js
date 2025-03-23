@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let lightModeButton = document.querySelector("#light_mode");
     let darkModeButton = document.querySelector("#dark_mode");
     let countElement = document.querySelector("#count_number");
+    countElement.textContent = 0;
     
     // Initialize count from the display (in case there's a value already there)
     let count = 0;
