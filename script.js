@@ -1,3 +1,5 @@
+console.log("Hello to the world")
+let count_val = document.querySelector("#count_number")
 console.log("Hello to the world");
 
 // This function will be called when the page loads
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let countElement = document.querySelector("#count_number");
     
     // Initialize count from the display (in case there's a value already there)
-    let count = parseInt(countElement.textContent) || 0;
+    let count = 0;
     
     // Function to increment the count
     function incrementCount() {
